@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem var(--mainPaddingX);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  /* border: 2px solid red; */
+  background: var(--mainBg);
+  z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  /* border: 1px solid red; */
+  height: 100%;
+}
+
+.nav-link {
+  color: var(--mainColor);
+  cursor: pointer;
+}

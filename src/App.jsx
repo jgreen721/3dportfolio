@@ -7,7 +7,7 @@ function App() {
     <div data-theme="dark" className="app">
       <Navbar/>
       <Hero/>
-      {/* <About/> */}
+      <About/>
       <Skills/>
       <Contact/>
       <Footer/>

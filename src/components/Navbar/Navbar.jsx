@@ -1,4 +1,5 @@
 import React from 'react'
+import { Rotate as Hamburger } from 'hamburger-react';
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -37,6 +38,9 @@ const Navbar = () => {
                     </a>
                 </li>
             </ul>
+            <div className="mobile-nav-links">
+            <Hamburger/>
+            </div>
         </div>
 
     </nav>

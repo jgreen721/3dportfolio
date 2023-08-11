@@ -1,8 +1,7 @@
 import React, {useEffect, useState , useRef} from 'react'
 import "./Skills.css"
 import { Canvas, useFrame , useThree } from '@react-three/fiber'
-import {  useGLTF } from '@react-three/drei'
-import { Raycaster,Vector3} from "three"
+import {  useGLTF,Text } from '@react-three/drei'
 import gsap from "gsap"
 
 
@@ -50,13 +49,52 @@ const removeLight=()=>{
 
 
 
+const SkillsHeader=()=>{
+  const textRef = useRef();
+  // let oscillationRange = 0.05;
+  // let oscillationSpeed = 0.05;
+  let deltaY = .002;
+  const [textPos,setTextPos] = useState([0,2,0])
+
+  useEffect(()=>{
+    if(innerWidth < 650){
+      setTextPos([0,6.35,-5])
+    }
+  },[])
+
+  useFrame((state,delta)=>{
+ 
+
+    // Calculate the oscillation angle based on time and speed
+    //  oscillationAngle = currentTime;
+
+    // Update the Y rotation of the text
+    // textRef.current.rotation.y = -Math.PI * 0.05 + oscillationAngle;
+    textRef.current.rotation.y += deltaY;
+    if(Math.abs(textRef.current.rotation.y) > .21){
+      deltaY *= -1
+    }
+    textRef.current.position.y += deltaY;
+    // textRef.current.rotation.y = -Math.PI * 0.05 + oscillationAngle;
+  })
+
+
+  return(
+    <Text ref={textRef} rotation={[0,-Math.PI * .05,0]} position={textPos}>
+    Favorite Tools
+   </Text>
+  )
+}
+
+
+
 const Skills = () => {
   const [mouseX,setMouseX] = useState(0)
   const [mouseY,setMouseY] = useState(0)
   const [skills,setSkills] = useState([
-    {id:1,name:"HTML5",years:"5",logo:"html.glb",scale:.5,position:[-4,0,0],rotation:[0,0,0]},
-    {id:2,name:"CSS3",years:"5",logo:"css.glb",scale:.5,position:[-.5,0,0],rotation:[0,0,0]},
-    {id:3,name:"React",years:"5",logo:"react_logo.glb",scale:.85,position:[3.5,1.5,0],rotation:[0,0,0]},
+    {id:1,name:"HTML5",years:"5",logo:"html.glb",scale:.5,position:[-4,-3,0],rotation:[0,0,0]},
+    {id:2,name:"CSS3",years:"5",logo:"css.glb",scale:.5,position:[-.5,-3,0],rotation:[0,0,0]},
+    {id:3,name:"React",years:"5",logo:"react_logo.glb",scale:.8, position:[3.5,-1.5,0],rotation:[0,0,0]},
   ])
 
 
@@ -77,6 +115,7 @@ setSkills(()=>[
   
              <Canvas>
          <color attach="background" args={["black"]}/>
+       <SkillsHeader/>
          <ambientLight/>
          {/* <OrbitControls enableZoom={false}/> */}
         {/* <SkillItem key={s.id} skill={s}/> */}

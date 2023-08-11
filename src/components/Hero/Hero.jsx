@@ -8,17 +8,17 @@ import "./Hero.css"
 const Hero = () => {
     const [mouseX,setMouseX] = useState(0);
     const [intensity,setIntensity] = useState(1);
-    const [showCanvas,setShowCanvas] = useState(false)
+    const [showCanvas,setShowCanvas] = useState(true)
     const img = useGLTF("laptop.glb");
 
 
 
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        let loaderTimer = setInterval(()=>setShowCanvas(true),1500)
+    //     let loaderTimer = setInterval(()=>setShowCanvas(true),1500)
 
-        return ()=>clearTimeout(loaderTimer)
-    })
+    //     return ()=>clearTimeout(loaderTimer)
+    // })
 
 
 
